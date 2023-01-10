@@ -413,8 +413,7 @@ class Entity(pygame.sprite.Sprite):
 				self.shooting = False
 				self.game.screen_shaking = False
 
-			
-
+		
 	def update(self):
 		self.cyote_timer += 1
 		self.idle_speed = self.platform_speed

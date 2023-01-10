@@ -259,7 +259,7 @@ class Zone(State):
 		self.ui.render()
 		self.run_fade()	
 		# top debug messages
-		self.game.draw_text(display, str(self.player.on_left_wall), ((255,255,255)), 100, (self.game.WIDTH*0.33,40))
+		self.game.draw_text(display, str(self.player.on_left), ((255,255,255)), 100, (self.game.WIDTH*0.33,40))
 		self.game.draw_text(display, 'FPS: ' +str(self.player.state), ((255,255,255)), 100, (self.game.WIDTH*0.5,40))
-		self.game.draw_text(display, str(self.player.on_right_wall), ((255,255,255)), 100, (self.game.WIDTH*0.66,40))
+		self.game.draw_text(display, str(self.player.on_ground), ((255,255,255)), 100, (self.game.WIDTH*0.66,40))
 
