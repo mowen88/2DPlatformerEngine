@@ -460,8 +460,8 @@ class Player(pygame.sprite.Sprite):
 		
 	def move_logic(self):
 		keys = pygame.key.get_pressed()
+
 		# lets player immediately bounce off wall instead of waiting for frixtion before they can turnaround
-	
 		if self.on_ground:
 			if (self.moving_right and self.on_left) or (self.moving_left and self.on_right):
 				self.vel.x = 0
@@ -531,38 +531,39 @@ class Player(pygame.sprite.Sprite):
 			if (self.facing == 1 and self.vel.x <= self.idle_speed) or (self.facing == -1 and self.vel.x >= self.idle_speed):
 				self.vel.x = self.idle_speed
 		
-		elif self.moving_right:
-
-			self.facing = 1
-
-			if self.vel.x <= self.idle_speed:
-				self.vel.x += self.friction
-			else:
-				self.vel.x += self.acceleration
-
-			if self.vel.x > self.max_speed + self.idle_speed:
-				self.vel.x = self.max_speed + self.idle_speed
-		
-		elif self.moving_left:
-
-			self.facing = -1
-
-			if self.vel.x >= self.idle_speed:
-				self.vel.x -= self.friction
-			else:
-				self.vel.x -= self.acceleration
-
-			if self.vel.x < -self.max_speed + self.idle_speed:
-				self.vel.x = -self.max_speed + self.idle_speed
-
-		elif self.facing == 1:
-			self.vel.x -= self.friction
-			if self.vel.x <= self.idle_speed:
-				self.vel.x = self.idle_speed
 		else:
-			self.vel.x += self.friction
-			if self.vel.x >= self.idle_speed:
-				self.vel.x = self.idle_speed
+			if self.moving_right:
+
+				self.facing = 1
+
+				if self.vel.x <= self.idle_speed:
+					self.vel.x += self.friction
+				else:
+					self.vel.x += self.acceleration
+
+				if self.vel.x > self.max_speed + self.idle_speed:
+					self.vel.x = self.max_speed + self.idle_speed
+			
+			elif self.moving_left:
+
+				self.facing = -1
+
+				if self.vel.x >= self.idle_speed:
+					self.vel.x -= self.friction
+				else:
+					self.vel.x -= self.acceleration
+
+				if self.vel.x < -self.max_speed + self.idle_speed:
+					self.vel.x = -self.max_speed + self.idle_speed
+
+			elif self.facing == 1:
+				self.vel.x -= self.friction
+				if self.vel.x <= self.idle_speed:
+					self.vel.x = self.idle_speed
+			else:
+				self.vel.x += self.friction
+				if self.vel.x >= self.idle_speed:
+					self.vel.x = self.idle_speed
 
 		self.hitbox.x += self.vel.x 
 		self.x_collisions()
